@@ -56,8 +56,7 @@
                                 >
                                     <v-card-title class="font-weight-bold"><a href="/" class="bcx">IMG-Size</a>
                                     </v-card-title>
-                                    <v-card-subtitle class="pb-0"><a href="/" class="bcx">Не больше 20 изображений в
-                                        день на
+                                    <v-card-subtitle class="pb-0"><a href="/" class="bcx">Не больше 2000 изображений на
                                         одного
                                         юзера.</a>
                                     </v-card-subtitle>
