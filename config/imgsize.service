@@ -1,0 +1,14 @@
+[Unit]
+Description=get_phone daemon
+After=network.target
+After=syslog.target
+
+[Service]
+WorkingDirectory=/home/wifi_radar
+ExecStart=/home/wifi_radar/venv/bin/python  /home/wifi_radar/get_phone.py  -o t -a wlan1 -s 100
+TimeoutStopSec=5
+PrivateTmp=true
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

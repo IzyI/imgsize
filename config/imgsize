@@ -1,0 +1,30 @@
+server {
+
+    server_name  imgsize.capers.fun;
+    listen 80;
+     client_max_body_size 6m;
+
+    location /uploads/ {
+        alias /root/imgsize/main/uploads/;
+    }
+
+   location /user {
+    proxy_pass http://localhost:8002;
+    proxy_set_header X-Forwarded-Host $server_name;
+    proxy_set_header X-Real-IP $remote_addr;
+    add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+   }
+
+    location /auth {
+    proxy_pass http://localhost:8002;
+    proxy_set_header X-Forwarded-Host $server_name;
+    proxy_set_header X-Real-IP $remote_addr;
+    add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+   }
+
+
+     location / {
+        root /root/imgsize/front/dist;
+        try_files $uri $uri/ /index.html;
+    }
+}

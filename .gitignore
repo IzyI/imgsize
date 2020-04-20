@@ -1,0 +1,13 @@
+.idea/
+venv/
+__pycache__/*
+.git/
+tmp/
+log*/*
+*.log
+data/*
+.sass-cache/*
+*cache*
+.pytest_cache/*
+migrations/*
+front/node_modules/

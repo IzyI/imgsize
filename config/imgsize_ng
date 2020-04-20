@@ -1,0 +1,33 @@
+server {
+
+    server_name  apibarrier.fvds.ru; # Подставьте свой домен
+    listen 80;
+    access_log  /root/imgsize/log/access_nginx.log;
+    error_log  /root/imgsize/log/error_nginx.log;
+
+    #location /.well-known {
+    #    root /var/www/html; # Понадобится для letsencrypt
+    #}
+
+    # Статические файлы
+    location = /favicon.ico {
+        alias /root/imgsize/favicon.ico;
+    }
+    location = /robots.txt {
+        alias /root/imgsize/robots.txt;
+    }
+
+    location /_include/ {
+        alias /root/imgsize/_include/;
+    }
+    location /static/ {
+        alias /root/imgsize/static/;
+    }
+
+   location / {
+    proxy_pass http://localhost:8004;
+    proxy_set_header X-Forwarded-Host $server_name;
+    proxy_set_header X-Real-IP $remote_addr;
+    add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+   }
+}
